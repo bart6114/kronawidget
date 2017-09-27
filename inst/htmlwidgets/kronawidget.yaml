@@ -1,0 +1,7 @@
+dependencies:
+  - name: krona
+    version: 2.0 #git commit bc6808b
+    src: htmlwidgets/lib/krona_bc6808b
+    script:
+      - krona-2.0.js
+#    stylesheet:
