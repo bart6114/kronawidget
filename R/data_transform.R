@@ -42,7 +42,7 @@ do_rename <- function(doc_part){
   }
 
   for(n in seq_along(doc_part)){
-    if(!names(doc_part)[n] == "magnitude"){
+    if(!names(doc_part)[n] %in% c("magnitude", "val")){
       attr(doc_part[[n]], "name") <- names(doc_part)[n]
       names(doc_part)[n] <- "node"
     }
@@ -111,8 +111,9 @@ df_to_krona<-function(df, name, magnitude, ...){
 
   # some remodelling
 
-  doc <- list(krona = doc)
-  doc$krona$attributes <- structure(list(attribute = structure("magnitude", display="area")), magnitude="magnitude")
-  doc
+  doc2 <- list(krona = list())
+  doc2$krona$attributes <- structure(list(attribute = structure("magnitude", display="area")), magnitude="magnitude")
+  doc2$krona$node <- structure(doc, name=name)
+  doc2
   # xml2::as_xml_document(doc)
 }
