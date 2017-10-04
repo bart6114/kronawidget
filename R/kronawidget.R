@@ -5,12 +5,16 @@
 #' @import htmlwidgets
 #'
 #' @export
-kronawidget <- function(message, width = NULL, height = NULL, elementId = NULL) {
+kronawidget <- function(krona_df, width = NULL, height = NULL, elementId = NULL) {
+
+  temp_xml_file <- tempfile()
+  xml2::write_xml(xml2::as_xml_document(krona_df), temp_xml_file, options = c("format", "no_declaration"))
 
   # forward options using x
   x = list(
-    message = message
+    content =  paste0(readLines(temp_xml_file), collapse = "\n")
   )
+
 
   # create widget
   htmlwidgets::createWidget(
@@ -19,16 +23,18 @@ kronawidget <- function(message, width = NULL, height = NULL, elementId = NULL) 
     width = width,
     height = height,
     package = 'kronawidget',
-    elementId = elementId
+    elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.padding = 0,
+      browser.padding = 0
+    )
   )
 }
 
 kronawidget_html <- function(id, style, class, ...){
-  tags$div(
-    tags$img(id="hiddenImage", src="http://krona.sourceforge.net/img/hidden.png", style="display:none"),
-    tags$div(
-      tag("krona", c()),
-      style="display:none")
+  htmltools::tags$div(
+    htmltools::tags$img(id="hiddenImage", src="http://krona.sourceforge.net/img/hidden.png", style="display:none"),
+    htmltools::tags$div(id=id, class=class, style="display:none")
   )
 }
 
