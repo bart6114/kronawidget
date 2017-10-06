@@ -1,9 +1,3 @@
-# TODO clean up imports
-library(tidyverse)
-library(rlang)
-library(xml2)
-library(progress)
-
 #' quotes values for use in adhoc parsing
 value_quote<-Vectorize(function(value){
   paste0("[['",value, "']]")
@@ -13,6 +7,7 @@ value_quote<-Vectorize(function(value){
 #'
 #' @param doc_part a structured list
 #' @return the structured list with added magnitude values
+#' @importFrom magrittr "%>%"
 add_magnitude <- function(doc_part){
 
   child_magnitude_vals <- sapply(doc_part, function(x) x[['magnitude']][['val']]) %>% unlist
@@ -63,20 +58,20 @@ do_rename <- function(doc_part){
 df_to_krona<-function(df, name, magnitude, ...){
   name <- substitute(name)
   magnitude <- substitute(magnitude)
-  levels <- quos(...)
+  levels <- rlang::quos(...)
 
   ## aggregate data on specified cols]
   df_agg <-
     df %>%
-    arrange(UQS(levels)) %>%
-    group_by(UQS(levels)) %>%
-    summarise(magnitude = sum(UQ(magnitude)))
+    dplyr::arrange(rlang::UQS(levels)) %>%
+    dplyr::group_by(rlang::UQS(levels)) %>%
+    dplyr::summarise(magnitude = sum(rlang::UQ(magnitude)))
 
   df_agg
 
   doc <- list()
 
-  pb <- progress_bar$new(total = nrow(df_agg))
+  pb <- progress::progress_bar$new(total = nrow(df_agg))
   num_levels <- ncol(df_agg)-1
   for(i in 1:nrow(df_agg)){
     values <- df_agg[i,1:num_levels] %>% unlist %>% unname
@@ -116,4 +111,20 @@ df_to_krona<-function(df, name, magnitude, ...){
   doc2$krona$node <- structure(doc, name=name)
   doc2
   # xml2::as_xml_document(doc)
+}
+
+#' Save krona object
+#'
+#' @param doc a KRONA document object created by \code{df_to_krona}
+#' @param filename the filename to write the xml to
+#'
+#' @export
+save_krona_xml <- function(doc, filename){
+  xml2::write_xml(
+    xml2::as_xml_document(doc),
+    "temp/test.xml", options = c("format", "no_declaration"))
+
+  message("Written KRONA XML file to '", filename, "'\n")
+
+  return(filename)
 }
