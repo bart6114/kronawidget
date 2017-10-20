@@ -4863,11 +4863,10 @@ function createCanvas(container)
 
 function load(containerId)
 {
-  console.log(containerId);
 	document.body.style.overflow = "hidden";
 	document.body.style.margin = 0;
 
-  container = document.querySelector(containerId);
+  	container = document.querySelector(containerId);
 
 	createCanvas(container);
 

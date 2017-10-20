@@ -6,7 +6,7 @@
 \alias{renderKronawidget}
 \title{Shiny bindings for kronawidget}
 \usage{
-kronawidgetOutput(outputId, width = "100\%", height = "400px")
+kronawidgetOutput(outputId, width = "100\%", height = "500px")
 
 renderKronawidget(expr, env = parent.frame(), quoted = FALSE)
 }

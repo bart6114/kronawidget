@@ -4,7 +4,7 @@
 \alias{kronawidget}
 \title{<Add Title>}
 \usage{
-kronawidget(krona_df, width = NULL, height = NULL, elementId = NULL)
+kronawidget(krona_df, width = NULL, height = "500px", elementId = NULL)
 }
 \description{
 <Add Description>
