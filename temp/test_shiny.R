@@ -8,30 +8,24 @@ ui <- dashboardPage(
   dashboardSidebar(),
   dashboardBody(
     fluidRow(
-      box(width = 12, height="700px",
-          div(style="height: 700px;",
-        kronawidgetOutput("krona", height="700px"))
+      box(width = 12,
+              kronawidgetOutput("krona", height = 700)
+      ),
+      box(width = 12,
+          kronawidgetOutput("krona2", height = 700)
       )
     )
   )
 )
-#
-# ui <- fluidPage(
-#   sidebarLayout(
-#     sidebarPanel(
-#       sliderInput("obs", "Number of observations:", min = 10, max = 500, value = 100)
-#     ),
-#     mainPanel(
-#       kronawidgetOutput("krona")
-#       )
-#   )
-# )
-
 
 server <- function(input, output) {
 
   output$krona <- renderKronawidget({
-    kronawidget(doc)
+    kronawidget.mem(doc)
+  })
+
+  output$krona2 <- renderKronawidget({
+    kronawidget.mem(doc)
   })
 }
 

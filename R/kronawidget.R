@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-kronawidget <- function(krona_df, width = NULL, height = "500px", elementId = NULL) {
+kronawidget <- function(krona_df, width = "100%", height = "500px", elementId = NULL) {
 
   temp_xml_file <- tempfile()
   xml2::write_xml(xml2::as_xml_document(krona_df), temp_xml_file, options = c("format", "no_declaration"))
@@ -23,20 +23,20 @@ kronawidget <- function(krona_df, width = NULL, height = "500px", elementId = NU
     width = width,
     height = height,
     package = 'kronawidget',
-    elementId = elementId,
-    sizingPolicy = htmlwidgets::sizingPolicy(
-      viewer.padding = 0,
-      browser.padding = 0
-    )
+    elementId = elementId
+    # sizingPolicy = htmlwidgets::sizingPolicy(
+    #   viewer.padding = 0,
+    #   browser.padding = 0
+    # )
   )
 }
 
-kronawidget_html <- function(id, style, class, ...){
-  htmltools::tags$div(
-    htmltools::tags$img(id="hiddenImage", src="http://krona.sourceforge.net/img/hidden.png", style="display:none"),
-    htmltools::tags$div(id=id, class=class)#, style="display:none")
-  )
-}
+# kronawidget_html <- function(id, style, class, ...){
+#   htmltools::tags$div(
+#     htmltools::tags$img(id="hiddenImage", src="http://krona.sourceforge.net/img/hidden.png", style="display:none"),
+#     htmltools::tags$div(id=id, class=class)#, style="display:none")
+#   )
+# }
 
 #' Shiny bindings for kronawidget
 #'

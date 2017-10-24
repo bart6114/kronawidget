@@ -13,9 +13,9 @@ save_krona_xml(doc, "temp/test.xml")
 
 
 
-kronawidget(doc)
+# kronawidget(doc)
 
-htmlwidgets::saveWidget(kronawidget(doc), "../temp/saved_widget")
+# htmlwidgets::saveWidget(kronawidget(doc), "../temp/saved_widget")
 
 library(memoise)
 kronawidget.mem <- memoise(kronawidget)

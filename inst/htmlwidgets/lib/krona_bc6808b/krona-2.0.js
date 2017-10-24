@@ -311,8 +311,8 @@ function resize()
 {
 	// imageWidth = canvas.innerWidth;
 	// imageHeight = canvas.innerHeight;
-	imageWidth = container.clientWidth;
-	imageHeight = container.clientHeight;
+	imageWidth = container.parentElement.clientWidth;
+	imageHeight = container.parentElement.clientHeight;
 
 	if ( ! snapshotMode )
 	{
@@ -4864,10 +4864,13 @@ function createCanvas(container)
 function load(containerId)
 {
   console.log(containerId);
-	document.body.style.overflow = "hidden";
-	document.body.style.margin = 0;
 
   container = document.querySelector(containerId);
+
+  //document.body.style.overflow = "hidden";
+	//document.body.style.margin = 0;
+	container.style.overflow = "hidden";
+	container.style.margin = 0;
 
 	createCanvas(container);
 
@@ -5302,8 +5305,12 @@ function minWidth()
 
 function mouseMove(e)
 {
-	mouseX = e.pageX;
-	mouseY = e.pageY - headerHeight;
+  console.log(e);
+	//mouseX = e.pageX;
+	//mouseY = e.pageY - headerHeight;
+	mouseX = e.pageX - canvas.getBoundingClientRect().x;
+	mouseY = e.pageY - canvas.getBoundingClientRect().y;
+
 	mouseXRel = (mouseX - centerX) * backingScale()
 	mouseYRel = (mouseY - centerY) * backingScale()
 
@@ -5696,7 +5703,8 @@ function setCallBacks()
 {
 	canvas.onselectstart = function(){return false;} // prevent unwanted highlighting
 	options.onselectstart = function(){return false;} // prevent unwanted highlighting
-	document.onmousemove = mouseMove;
+	//document.onmousemove = mouseMove;
+	container.onmousemove = mouseMove;
 	window.onblur = focusLost;
 	window.onmouseout = focusLost;
 	document.onkeyup = onKeyUp;
