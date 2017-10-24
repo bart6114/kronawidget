@@ -46,7 +46,7 @@ do_rename <- function(doc_part){
 
   doc_part
 }
-
+library(rlang)
 #' Convert a data.frame to a KRONA XML structure
 #'
 #' @param df the data.frame
@@ -56,14 +56,14 @@ do_rename <- function(doc_part){
 #' @return an xml object (based on xml2)
 #' @export
 df_to_krona<-function(df, name, magnitude, ...){
-  name <- substitute(name)
-  magnitude <- substitute(magnitude)
-  levels <- rlang::quos(...)
+  name <- rlang::sym(name)
+  magnitude <- rlang::sym(magnitude)
+  levels <- rlang::syms(unlist(list(...)))
 
   ## aggregate data on specified cols]
   df_agg <-
     df %>%
-    dplyr::arrange(rlang::UQS(levels)) %>%
+    dplyr::arrange(!!! levels) %>%
     dplyr::group_by(rlang::UQS(levels)) %>%
     dplyr::summarise(magnitude = sum(rlang::UQ(magnitude)))
 
@@ -127,4 +127,22 @@ save_krona_xml <- function(doc, filename){
   message("Written KRONA XML file to '", filename, "'\n")
 
   return(filename)
+}
+
+
+
+#' Cached version of df_to_krona
+#'
+#' @param cache_type either \code{memory} or \code{filesystem}
+#' @param cache_fs_path directory to store cached data if \code{cache_type == "filesystem"}
+#'
+#' @return cached output of df_to_krona
+#' @export
+df_to_krona_cached <- function(cache_type = "memory", cache_fs_path = NULL){
+  if(cache_type == "memory"){
+    cache_func = memoise::cache_memory()
+  } else if(cache_type == "filesystem"){
+    cache_func = memoise::cache_filesystem(cache_fs_path)
+  }
+  mem_func <- memoise::memoise(df_to_krona, cache = cache_func)
 }

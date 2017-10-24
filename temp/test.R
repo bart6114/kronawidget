@@ -3,17 +3,16 @@ library(kronawidget)
 testset<-read.csv2("inst/extdata/MARS_stressors.csv", stringsAsFactors = F)
 
 doc<-
-  # testset %>% filter(country %in% input$countries) %>%
   df_to_krona(df = testset,
-              name = test,
-              magnitude = area,
-              country, river.basin.district, first.stressor, second.stressor, third.stressor)
+              name = "test",
+              magnitude = "area",
+              "country", "river.basin.district", "first.stressor", "second.stressor")#, "third.stressor")
 
-save_krona_xml(doc, "temp/test.xml")
+# save_krona_xml(doc, "temp/test.xml")
 
 
 
-# kronawidget(doc)
+kronawidget(doc)
 
 # htmlwidgets::saveWidget(kronawidget(doc), "../temp/saved_widget")
 

@@ -1,4 +1,4 @@
-{//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 //
 // PURPOSE
 //
@@ -72,8 +72,9 @@
 // https://github.com/marbl/Krona/wiki/
 //
 //-----------------------------------------------------------------------------
-}
 
+
+function initKrona(containerId) {
 
 var canvas;
 var container;
@@ -4876,7 +4877,7 @@ function load(containerId)
 
 	if ( context == undefined )
 	{
-		document.body.innerHTML = '\
+		container.innerHTML = '\
 <br/>This browser does not support HTML5 (see \
 <a href="https://github.com/marbl/Krona/wiki/Browser%20support">Browser support</a>).\
 	';
@@ -4885,7 +4886,7 @@ function load(containerId)
 
 	if ( typeof context.fillText != 'function' )
 	{
-		document.body.innerHTML = '\
+		container.innerHTML = '\
 <br/>This browser does not support HTML5 canvas text (see \
 <a href="https://github.com/marbl/Krona/wiki/Browser%20support">Browser support</a>).\
 	';
@@ -4894,7 +4895,7 @@ function load(containerId)
 
 	resize();
 
-	var kronaElement = document.getElementsByTagName('krona')[0];
+	var kronaElement = container.parentNode.getElementsByTagName('krona')[0];
 
 	var magnitudeName;
 	var hueName;
@@ -5305,7 +5306,6 @@ function minWidth()
 
 function mouseMove(e)
 {
-  console.log(e);
 	//mouseX = e.pageX;
 	//mouseY = e.pageY - headerHeight;
 	mouseX = e.pageX - canvas.getBoundingClientRect().x;
@@ -6634,3 +6634,6 @@ function zoomOut()
 		selectedNodeLast.getDepth() < selectedNode.getDepth());
 }
 */
+
+load(containerId);
+}

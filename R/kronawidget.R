@@ -24,19 +24,8 @@ kronawidget <- function(krona_df, width = "100%", height = "500px", elementId = 
     height = height,
     package = 'kronawidget',
     elementId = elementId
-    # sizingPolicy = htmlwidgets::sizingPolicy(
-    #   viewer.padding = 0,
-    #   browser.padding = 0
-    # )
   )
 }
-
-# kronawidget_html <- function(id, style, class, ...){
-#   htmltools::tags$div(
-#     htmltools::tags$img(id="hiddenImage", src="http://krona.sourceforge.net/img/hidden.png", style="display:none"),
-#     htmltools::tags$div(id=id, class=class)#, style="display:none")
-#   )
-# }
 
 #' Shiny bindings for kronawidget
 #'

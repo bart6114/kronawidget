@@ -20,6 +20,7 @@ HTMLWidgets.widget({
 
 
       renderValue: function(x) {
+        el.innerHTML = undefined;
 
         var img = document.createElement('img');
         img.setAttribute('id', 'hiddenImage');
@@ -29,33 +30,28 @@ HTMLWidgets.widget({
 
 
         var containerDiv = document.createElement('div');
-        var containerDivId = generateID();
+        var containerDivId = generateID('kronacontainer');
         containerDiv.setAttribute('id', containerDivId);
-        console.log(999, containerDivId);
 
-
-        //el.parentElement.setAttribute("style", "height: "+ height + ";");
-        console.log(1, width, height);
         el.innerHTML = x.content; // insert data
         el.getElementsByTagName('krona')[0].setAttribute('style', 'display:none;');
 
         el.appendChild(img);
         el.appendChild(containerDiv);
 
-        load('#' + containerDivId); // load the Krona logic
-        //el.getElementsByTagName('canvas')[0].setAttribute("style", "height: "+ "700px" + ";");
+        //load('#' + containerDivId); // load the Krona logic
+        initKrona('#' + containerDivId);
 
 
       },
 
       resize: function(width, height) {
-        console.log(2, width, height);
 
       },
 
       initialize: function(el, width, height) {
-        console.log(555, height);
-}
+
+      }
 
 
     };
