@@ -32,6 +32,8 @@ server <- function(input, output) {
 
   krona_doc <- reactive({
     input$generate
+
+
     df_to_krona_c(df = testset,
                   name = "test",
                   magnitude = "area",
@@ -43,8 +45,10 @@ server <- function(input, output) {
   })
 
   output$krona <- renderKronawidget({
-    # kronawidget.mem(doc)
-    kronawidget(krona_doc())
+
+    withProgress(message = 'Constructing graph data', value = .5, {
+      kronawidget(krona_doc())
+    })
   })
 
   provider_levels <- reactive({
