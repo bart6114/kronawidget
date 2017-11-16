@@ -6,6 +6,9 @@
 \usage{
 value_quote(value)
 }
+\arguments{
+\item{value}{value}
+}
 \description{
 quotes values for use in adhoc parsing
 }

@@ -1,4 +1,5 @@
 #' quotes values for use in adhoc parsing
+#' @param value value
 value_quote<-Vectorize(function(value){
   paste0("[['",value, "']]")
 })
@@ -7,7 +8,7 @@ value_quote<-Vectorize(function(value){
 #'
 #' @param doc_part a structured list
 #' @return the structured list with added magnitude values
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr %>%
 add_magnitude <- function(doc_part){
 
   child_magnitude_vals <- sapply(doc_part, function(x) x[['magnitude']][['val']]) %>% unlist

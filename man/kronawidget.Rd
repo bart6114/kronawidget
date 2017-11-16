@@ -6,6 +6,15 @@
 \usage{
 kronawidget(krona_df, width = "100\%", height = "500px", elementId = NULL)
 }
+\arguments{
+\item{krona_df}{Dataframe}
+
+\item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
+\code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
+string and have \code{'px'} appended.}
+
+\item{elementId}{Element ID}
+}
 \description{
 <Add Description>
 }
