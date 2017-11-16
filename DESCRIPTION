@@ -7,7 +7,7 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Krona lets you interactively explore metagenomes 
   and more from a web browser. This package provides htmlwidget / 
   Shiny bindings to the javascript libary.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
   htmlwidgets,
