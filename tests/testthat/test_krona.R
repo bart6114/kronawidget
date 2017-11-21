@@ -23,6 +23,12 @@ test_that("Test kronawidget", {
 })
 
 # test 3
+test_that("Test kronawidget cached", {
+  y <- kronawidget_cached(doc)
+  expect_s3_class(y, c("kronawidget", "htmlwidget"))
+})
+
+# test 4
 test_that("Test doc equal to doc test", {
   expect_equal(doc, test_doc)
 })
