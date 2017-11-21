@@ -24,6 +24,7 @@ test_that("Test kronawidget", {
 
 # test 3
 test_that("Test kronawidget cached", {
+  kronawidget_cached <- kronawidget_cached(cache_type = "memory")
   y <- kronawidget_cached(doc)
   expect_s3_class(y, c("kronawidget", "htmlwidget"))
 })
