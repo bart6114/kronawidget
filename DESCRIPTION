@@ -16,8 +16,8 @@ Imports:
     dplyr,
     memoise,
     progress,
-    rlang,
-    xml2
+    rlang
+Remotes: bart6114/xml2
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat
