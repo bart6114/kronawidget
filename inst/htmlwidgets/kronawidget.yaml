@@ -4,4 +4,3 @@ dependencies:
     src: htmlwidgets/lib/krona_bc6808b
     script:
       - krona-2.0.js
-#    stylesheet:

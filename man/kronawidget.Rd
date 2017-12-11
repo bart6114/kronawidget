@@ -4,7 +4,8 @@
 \alias{kronawidget}
 \title{<Add Title>}
 \usage{
-kronawidget(krona_df, width = "100\%", height = "500px", elementId = NULL)
+kronawidget(krona_df, width = "100\%", height = "500px", elementId = NULL,
+  offsetAdjuster = 60)
 }
 \arguments{
 \item{krona_df}{Dataframe}

@@ -74,7 +74,7 @@
 //-----------------------------------------------------------------------------
 
 
-function initKrona(containerId) {
+function initKrona(containerId, offsetAdjuster) {
 
 var canvas;
 var container;
@@ -1998,7 +1998,7 @@ function Node()
 		if ( snapshotMode )
 		{
 			svg +=
-				'<circle cx="' + centerX + '" cy="' + centerY +
+				'<circle cx="' + (centerX)+ '" cy="' + centerY +
 				'" r="' + childRadiusInner + '"/>';
 			svg +=
 				'<circle cx="' + centerX + '" cy="' + centerY +
@@ -2044,8 +2044,9 @@ function Node()
 
 	this.getMapPosition = function()
 	{
+		console.log(offsetAdjuster);
 		return {
-			x : (details.offsetLeft + details.clientWidth - mapRadius),
+			x : (details.offsetLeft + details.clientWidth - mapRadius - offsetAdjuster),
 			y : ((focusNode.getDepth() - this.getDepth()) *
 				(mapBuffer + mapRadius * 2) - mapRadius) +
 				details.clientHeight + details.offsetTop
@@ -4864,7 +4865,7 @@ function createCanvas(container)
 
 function load(containerId)
 {
-  console.log(containerId);
+	console.log('creating KRONA div with id: ', containerId);
 
   container = document.querySelector(containerId);
 
@@ -6634,6 +6635,5 @@ function zoomOut()
 		selectedNodeLast.getDepth() < selectedNode.getDepth());
 }
 */
-
 load(containerId);
 }

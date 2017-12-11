@@ -10,16 +10,16 @@
 #' @import htmlwidgets
 #'
 #' @export
-kronawidget <- function(krona_df, width = "100%", height = "500px", elementId = NULL) {
+kronawidget <- function(krona_df, width = "100%", height = "500px", elementId = NULL, offsetAdjuster = 60) {
 
   temp_xml_file <- tempfile()
   xml2::write_xml(xml2::as_xml_document(krona_df), temp_xml_file, options = c("format", "no_declaration"))
 
   # forward options using x
   x = list(
-    content =  paste0(readLines(temp_xml_file), collapse = "\n")
+    content =  paste0(readLines(temp_xml_file), collapse = "\n"),
+    offsetAdjuster = offsetAdjuster
   )
-
 
   # create widget
   htmlwidgets::createWidget(

@@ -28,7 +28,6 @@ HTMLWidgets.widget({
         img.setAttribute('style', 'display:none;');
 
 
-
         var containerDiv = document.createElement('div');
         var containerDivId = generateID('kronacontainer');
         containerDiv.setAttribute('id', containerDivId);
@@ -39,8 +38,8 @@ HTMLWidgets.widget({
         el.appendChild(img);
         el.appendChild(containerDiv);
 
-        //load('#' + containerDivId); // load the Krona logic
-        initKrona('#' + containerDivId);
+        // load the Krona logic
+        initKrona('#' + containerDivId, x.offsetAdjuster);
 
 
       },

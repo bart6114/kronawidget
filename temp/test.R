@@ -1,6 +1,7 @@
 
 library(kronawidget)
-testset<-read.csv2("inst/extdata/MARS_stressors.csv", stringsAsFactors = F)
+data(testdata)
+testset<-testdata
 
 doc<-
   df_to_krona(df = testset,

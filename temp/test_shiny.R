@@ -2,7 +2,8 @@ library(shiny)
 library(shinydashboard)
 
 library(kronawidget)
-testset<-read.csv2("../inst/extdata/MARS_stressors.csv", stringsAsFactors = F)
+data(testdata)
+testset<-testdata
 
 df_to_krona_c <- df_to_krona_cached(cache_type = "filesystem",
                                     cache_fs_path = "~/.cache")
