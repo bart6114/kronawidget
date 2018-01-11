@@ -1,12 +1,13 @@
-#' <Add Title>
+#' kronawidget
 #'
-#' <Add Description>
+#' R bindings for the KRONA javascript visualization
 #'
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param krona_df Dataframe
-#' @param elementId Element ID
+#' @param krona_df a krona data object
+#' @param elementId the id of the div to create
+#' @param offsetAdjuster a numeric to fix the offset of the right-side pie charts
 #' @import htmlwidgets
 #'
 #' @export
@@ -59,3 +60,14 @@ renderKronawidget <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, kronawidgetOutput, env, quoted = TRUE)
 }
+
+
+#' testdata
+#'
+#' @format A test data frame to be used with krona_to_df
+#' \describe{
+#'   \item{price}{price, in US dollars}
+#'   \item{carat}{weight of the diamond, in carats}
+#'   ...
+#' }
+"testdata"

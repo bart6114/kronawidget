@@ -2,20 +2,22 @@
 % Please edit documentation in R/kronawidget.R
 \name{kronawidget}
 \alias{kronawidget}
-\title{<Add Title>}
+\title{kronawidget}
 \usage{
 kronawidget(krona_df, width = "100\%", height = "500px", elementId = NULL,
   offsetAdjuster = 60)
 }
 \arguments{
-\item{krona_df}{Dataframe}
+\item{krona_df}{a krona data object}
 
 \item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
 \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 string and have \code{'px'} appended.}
 
-\item{elementId}{Element ID}
+\item{elementId}{the id of the div to create}
+
+\item{offsetAdjuster}{a numeric to fix the offset of the right-side pie charts}
 }
 \description{
-<Add Description>
+R bindings for the KRONA javascript visualization
 }

@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^temp$
+NOTES.md
+README.md
+README.Rmd
