@@ -3544,7 +3544,8 @@ function addOptionElements(hueName, hueDefault)
 	// document.body.appendChild(options);
 	container.appendChild(options);
 
-	document.body.style.font = '11px sans-serif';
+	//document.body.style.font = '11px sans-serif';
+	container.style.font = '11px sans-serif';
 	var position = 5;
 
 	details = document.createElement('div');
