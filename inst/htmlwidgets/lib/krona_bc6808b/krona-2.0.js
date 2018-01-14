@@ -6159,7 +6159,7 @@ function svgHeader()
 '</title>\
 <defs>\
 	<style type="text/css">\
-	// text {font-size: ' + fontSize + 'px; font-family: ' + fontFamily + '; dominant-baseline:central}\
+	svg text {font-size: ' + fontSize + 'px; font-family: ' + fontFamily + '; dominant-baseline:central}\
 	path {stroke-width:' + thinLineWidth * fontSize / 12 + ';}\
 	path.wedge {stroke:none}\
 	path.line {fill:none;stroke:black;}\
