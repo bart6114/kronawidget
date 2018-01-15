@@ -2044,7 +2044,6 @@ function Node()
 
 	this.getMapPosition = function()
 	{
-		console.log(offsetAdjuster);
 		return {
 			x : (details.offsetLeft + details.clientWidth - mapRadius - offsetAdjuster),
 			y : ((focusNode.getDepth() - this.getDepth()) *
