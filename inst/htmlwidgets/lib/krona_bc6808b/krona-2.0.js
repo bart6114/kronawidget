@@ -5131,7 +5131,7 @@ function load(containerId)
 
 	setInterval(update, 20);
 
-	window.onresize = handleResize;
+	container.onresize = handleResize;
 	updateMaxAbsoluteDepth();
 	updateViewNeeded = true;
 }
