@@ -5707,12 +5707,12 @@ function setCallBacks()
 	options.onselectstart = function(){return false;} // prevent unwanted highlighting
 	//document.onmousemove = mouseMove;
 	container.onmousemove = mouseMove;
-	window.onblur = focusLost;
-	window.onmouseout = focusLost;
-	document.onkeyup = onKeyUp;
-	document.onkeydown = onKeyDown;
+	container.onblur = focusLost;
+	container.onmouseout = focusLost;
+	container.onkeyup = onKeyUp;
+	container.onkeydown = onKeyDown;
 	canvas.onmousedown = mouseClick;
-	document.onmouseup = mouseUp;
+	container.onmouseup = mouseUp;
 	keyControl.onclick = toggleKeys;
 	collapseCheckBox = document.getElementById('collapse');
 	collapseCheckBox.checked = collapse;
