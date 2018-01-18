@@ -6,9 +6,10 @@ output:
 
 ## Installation
 
-Install the package using `devtools`. This requires you to have the `devtools` package installed.
+Install the package using `devtools`. This requires you to have the `devtools` package installed. Please also install the alternative `xml2` version as long as the roundtrip bug has not been fixed.
 
 ```{r, eval=F}
+devtools::install_github('bart6114/xml2')
 devtools::install_github('dataroots/kronawidget')
 ```
 
